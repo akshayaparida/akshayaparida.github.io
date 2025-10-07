@@ -29,10 +29,23 @@
                 <h1>Hi, I'm Akshaya Parida</h1>
                 <p>AI Engineering</p>
             </div>
-            <h5 class="intro-description">
+            <p class="intro-description">
             Currently hands-on learning in AI engineering.
-
-</h5>
+            </p>
+            <div class="status-widget">
+                <div class="status-item">
+                    <i class="fa-solid fa-location-dot status-icon"></i>
+                    <span>Bengaluru, India</span>
+                </div>
+                <div class="status-item">
+                    <i class="fa-regular fa-clock status-icon"></i>
+                    <span id="live-time">Loading...</span>
+                </div>
+                <div class="status-item status-badge">
+                    <i class="fa-solid fa-circle-check status-icon"></i>
+                    <span>Open to AI Engineering roles</span>
+                </div>
+            </div>
             <div class="links-container">
                 <i class="fa-solid link-arrow fa-arrow-right"></i>
                 <a href="mailto:akshayaparida2811@gmail.com">Email me</a>
@@ -41,7 +54,14 @@
                 <a target="_blank" href="https://www.linkedin.com/in/akshaya-parida-7036a426a/">LinkedIn</a>
             </div>
 
-
+            <div class="github-section">
+                <h3 class="github-title">GitHub Contributions <span id="current-date"></span></h3>
+                <div class="github-contribution-wrapper">
+                    <a href="https://github.com/akshayaparida" target="_blank" rel="noopener noreferrer">
+                        <img src="https://ghchart.rshah.org/39d353/akshayaparida" alt="GitHub Contribution Graph" class="github-chart" />
+                    </a>
+                </div>
+            </div>
 
        
           
@@ -49,6 +69,41 @@
         <section>
             <h2>Lastest Projects</h2>
             <div class="cards-grid">
+                <div class="project-card">
+                    <div>
+                     
+                        <h4>Bengaluru Infra AI Reporter</h4>
+                        <p>Oct 2025</p>
+                        <div class="tech-list">
+                            <div class="card-button-secondary">
+                                <p>Next.js</p>
+                            </div>
+                            <div class="card-button-secondary">
+                                <p>TypeScript</p>
+                            </div>
+                            <div class="card-button-secondary">
+                                <p>Cerebras LLaMA</p>
+                            </div>
+                            <div class="card-button-secondary">
+                                <p>Docker</p>
+                            </div>
+                            <div class="card-button-secondary">
+                                <p>PostgreSQL</p>
+                            </div>
+                        </div>
+                        <p>A production-ready, full-stack platform enabling Bengaluru citizens to report infrastructure issues (potholes, garbage, water leaks, broken streetlights) with GPS + photo evidence. Features AI classification via Cerebras LLaMA, automated email notifications to authorities, and an intelligent Twitter bot for civic engagement.
+                        </p>
+                        <div class="project-links">
+                            <a target="_blank" href="https://github.com/akshayaparida/bengaluru-infra-aiagent">GitHub</a>
+                        </div>
+                    </div>
+                    <div class="img-div">
+                        <img class="big-img"
+                            src="public/bengaluru-infra.png"
+                            alt="bengaluru-infra-thumbnail" />
+                    </div>
+                </div>
+
                 <div class="project-card">
                     <div>
                      
@@ -76,7 +131,7 @@
                     </div>
                     <div class="img-div">
                         <img class="big-img"
-                            src="/public/githubtracker.png?raw=true"
+                            src="public/githubtracker.png"
                             alt="githubtracker-thumbnail" />
                     </div>
                 </div>
@@ -92,3 +147,74 @@
         <p>By Akshaya Parida check the repo on <a
                 target="_blank" href="https://github.com/akshayaparida/akshayaparida.github.io">GitHub</a></p>
     </footer>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const options = {
+                timeZone: 'Asia/Kolkata',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            };
+            const timeString = now.toLocaleTimeString('en-IN', options);
+            document.getElementById('live-time').textContent = timeString;
+        }
+        
+        function updateDate() {
+            const now = new Date();
+            const day = String(now.getDate()).padStart(2, '0');
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const year = now.getFullYear();
+            const dateString = `${day}-${month}-${year}`;
+            document.getElementById('current-date').textContent = dateString;
+        }
+        
+        updateTime();
+        updateDate();
+        setInterval(updateTime, 1000);
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-visible');
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.project-card').forEach(card => {
+                observer.observe(card);
+            });
+        });
+
+        let lastDotTime = 0;
+        const dotInterval = 50;
+
+        document.addEventListener('mousemove', (e) => {
+            const currentTime = Date.now();
+            
+            if (currentTime - lastDotTime < dotInterval) {
+                return;
+            }
+            
+            lastDotTime = currentTime;
+            
+            const dot = document.createElement('div');
+            dot.className = 'cursor-dot';
+            dot.style.left = e.clientX - 3 + 'px';
+            dot.style.top = e.clientY - 3 + 'px';
+            
+            document.body.appendChild(dot);
+            
+            setTimeout(() => {
+                dot.remove();
+            }, 800);
+        });
+    </script>
