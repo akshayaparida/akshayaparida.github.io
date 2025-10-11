@@ -1,7 +1,9 @@
+import Link from "next/link";
+
 export default function Header() {
   return (
     <header>
-      <a href="/">Akshaya Parida</a>
+      <Link href="/">Akshaya Parida</Link>
       <nav>
         <a target="_blank" href="https://github.com/akshayaparida" rel="noopener noreferrer">
           <i className="fa-brands fa-github"></i>

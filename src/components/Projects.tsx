@@ -20,12 +20,13 @@ export default function Projects() {
       });
     }, observerOptions);
 
-    cardsRef.current.forEach((card) => {
+    const currentCards = cardsRef.current;
+    currentCards.forEach((card) => {
       if (card) observer.observe(card);
     });
 
     return () => {
-      cardsRef.current.forEach((card) => {
+      currentCards.forEach((card) => {
         if (card) observer.unobserve(card);
       });
     };
