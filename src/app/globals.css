@@ -1,9 +1,131 @@
+@import "tailwindcss";
+
+:root {
+    --background-primary: white;
+    --background-secondary: '';
+    --background-tertiary: #dbeafe;
+    --background-accent: '';
+    --background-compliment: '';
+    --background-gradient: '';
+    --background-muted: #f8fafc;
+
+    --color-primary: #333333;
+    --color-secondary: '';
+    --color-tertiary: '';
+    --color-accent: '';
+    --color-compliment: '';
+    --color-gradient: '';
+    --color-muted: ;
+    --color-link: #2563eb;
+    --color-link-transparent: rgba(37, 99, 235, 0.1);
+
+    --color-success: '';
+    --color-warning: '';
+    --color-error: '';
+    --color-info: '';
+    --color-highlight: #fef9c3;
+
+    --gradient-start: #9580ff;
+    --gradient-end: #80ffea;
+
+    --border-primary: #f1f5f9;
+    --border-secondary: #bed1e7;
+    --border-highlight: #64748b;
+    --border-tertiary: '';
+
+    --shadow-dark: '';
+    --shadow-light: '';
+    --shadow-text: '';
+
+    --padding-small: 1rem;
+    --padding-large: 2rem;
+
+    --border-radius-small: 0.5rem;
+    --border-radius-large: 0.75rem;
+    --highlight-border-radius: 0.5rem;
+
+    --text-selection: '';
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-eczar), serif;
+}
+
 body {
+    background: var(--background-primary);
+    color: var(--color-primary);
+    font-size: 0.875rem;
+    line-height: 1.6rem;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     position: relative;
     overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+    font-family: var(--font-grenze), serif;
+    width: fit-content;
+}
+
+h1 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}
+
+h4 {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+}
+
+h5 {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 310;
+}
+
+h6 {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+p {
+    display: block;
+    width: fit-content;
+}
+
+a {
+    color: var(--color-link);
+}
+
+a:active,
+a:focus,
+a:hover {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 .cursor-dot {
@@ -80,7 +202,6 @@ section {
     line-height: 1.6;
 }
 
-
 .links-container {
     display: flex;
     align-items: center;
@@ -91,12 +212,6 @@ section {
 .link-arrow {
     color: var(--color-link);
     transform: rotate(-45deg);
-}
-
-.color-div {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
 }
 
 .cards-grid {
@@ -139,8 +254,12 @@ section {
     font-size: 0.8rem;
 }
 
-
-
+.card-button-secondary {
+    color: var(--color-link);
+    background: var(--color-link-transparent);
+    border: none !important;
+    box-shadow: none !important;
+}
 
 .status-widget {
     display: flex;
@@ -251,11 +370,6 @@ section {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-header {
-    position: relative;
-    z-index: 2;
-}
-
 @keyframes slideInUp {
     from {
         opacity: 0;
@@ -267,8 +381,42 @@ header {
     }
 }
 
-
 @media (min-width: 640px) {
+    body {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    h1 {
+        font-size: 2.25rem;
+        line-height: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.875rem;
+        line-height: 2.25rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+
+    h4 {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+    }
+
+    h5 {
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+    }
+
+    h6 {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
     .project-card {
         flex-direction: row;
     }
